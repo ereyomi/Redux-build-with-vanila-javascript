@@ -1,2 +1,2 @@
-# Simple-Redux-build-with-vanila-javascript
+# Redux-build-with-vanila-javascript
 Building Redux with vanila javascript, html and css
