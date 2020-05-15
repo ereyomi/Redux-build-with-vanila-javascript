@@ -49,6 +49,34 @@ function addTodoAction (todo) {
     }
   }
   
+  function removeTodoAction (id) {
+    return {
+      type: REMOVE_TODO,
+      id,
+    }
+  }
+  
+  function toggleTodoAction (id) {
+    return {
+      type: TOGGLE_TODO,
+      id,
+    }
+  }
+  
+  function addGoalAction (goal) {
+    return {
+      type: ADD_GOAL,
+      goal,
+    }
+  }
+  
+  function removeGoalAction (id) {
+    return {
+      type: REMOVE_GOAL,
+      id,
+    }
+  }
+  
 function todos (state = [], action) {
     switch(action.type) {
       case ADD_TODO :
@@ -62,15 +90,24 @@ function todos (state = [], action) {
         return state
     }
   }
-
+  function goals (state = [], action) {
+    switch(action.type) {
+      case ADD_GOAL :
+        return state.concat([action.goal])
+      case REMOVE_GOAL :
+        return state.filter((goal) => goal.id !== action.id)
+      default :
+        return state
+    }
+  }
 const store = createStore(todos)
 
 
 store.subscribe(() => {
     console.log('The new state is: ', store.getState())
-  })
-  store.dispatch(addTodoAction({
+})
+store.dispatch(addTodoAction({
     id: 0,
-    name: 'Walk the dog',
+    name: 'Walk the ereyomi',
     complete: false,
-  }))
+}))
